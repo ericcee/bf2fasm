@@ -44,7 +44,7 @@ namespace bf2exe
             {
                 if (",.+-[]<>".Contains(x))
                 {
-                    if (curr == ']' || curr == '[')
+                    if ("[],.".Contains(curr))
                     {
                         compressedBf.Add(new Tuple<char, int>(curr, 1));
                         times = 0;
