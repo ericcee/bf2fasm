@@ -5,6 +5,6 @@ Converts Brainfuck Code to Flatassembler Syntax Code.
 
 Use **bf2fasm \<source file\>** to compile Brainfuck to Flatassembler Code.
 
-[Flatassembler](https://flatassembler.net/)
+[Flatassembler](https://flatassembler.net/)<br>
 [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck)
 
