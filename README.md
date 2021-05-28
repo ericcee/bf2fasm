@@ -1,7 +1,7 @@
 # bf2fasm
 Brainfuck to Flatassembler compiler
 
-Converts Brainfuck Code to Flatassembler Syntax Code.
+Converts Brainfuck Code to Flatassembler Syntax.
 
 Use **bf2fasm \<source file\>** to compile Brainfuck to Flatassembler Code.
 
