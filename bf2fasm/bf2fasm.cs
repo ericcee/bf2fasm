@@ -36,33 +36,43 @@ namespace bf2exe
             this.code = code;
         }
 
+        private string filterCode(string code)
+        {
+            string x = string.Empty;
+            foreach(char xx in code)
+            {
+                if ("[],.<>+-".Contains(xx)) x += xx;
+            }
+            return x;
+        }
         public void compressBF()
         {
-            char curr = '\0';
-            int times = 0;
-            foreach(char x in code)
+            char curr = code[0];
+            int times = 1;
+            for(int i = 1; i < code.Length; i++)
             {
-                if (",.+-[]<>".Contains(x))
+                char x = code[i];
+
+                if ("[],.".Contains(curr))
                 {
-                    if ("[],.".Contains(curr))
-                    {
-                        compressedBf.Add(new Tuple<char, int>(curr, 1));
-                        times = 0;
-                    }
-                    else if (curr != x && curr != '\0')
-                    {
-                        compressedBf.Add(new Tuple<char, int>(curr, times));
-                        times = 0;
-                    }
-                    curr = x;
-                    times++;
+                    compressedBf.Add(new Tuple<char, int>(curr, 1));
+                    times = 0;
                 }
+                else if (curr != x)
+                {
+                    compressedBf.Add(new Tuple<char, int>(curr, times));
+                    times = 0;
+                }
+                curr = x;
+                times++;
             }
-            compressedBf.Add(new Tuple<char, int>(curr, times));
+
+            if(times != 0) compressedBf.Add(new Tuple<char, int>(curr, 1));
         }
 
         public string compileBf()
         {
+            code = filterCode(code);
             compressBF();
             while(codepos != compressedBf.Count)
             {
